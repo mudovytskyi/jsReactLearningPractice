@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ContestPreview = (contest) => (
-    <div className="ContestPreview">
+const ContestPreview = (contest, idx) => (
+    <div className="ContestPreview" key={idx}>
         <div>
             {contest.categoryName}
         </div>
