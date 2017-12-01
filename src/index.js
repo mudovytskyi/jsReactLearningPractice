@@ -91,13 +91,14 @@ const App = () => {
 };
 ----------------
  */
-import data from './testData';
+// import data from './testData';
 // console.log(data);
 
 import App from './components/App';
 
 ReactDOM.render( 
-    <App contests={data.contests} /> ,
+    // <App contests={data.contests} /> ,
+    <App /> ,
     document.getElementById('root')
 );
 

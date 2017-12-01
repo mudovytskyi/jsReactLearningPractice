@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
 
+
+import data from '../testData';
 // simple stateless component
 // const App = () => {
 //     return (
@@ -26,7 +28,8 @@ class App extends React.Component {
     // }; */
     
     state = { 
-        pageHeader: 'Naming Contests' 
+        pageHeader: 'Naming Contests',
+        contests: []
     };
 
     componentDidMount() {
@@ -36,7 +39,9 @@ class App extends React.Component {
         //usually using here ajax searching to check if there any dom to mount
         //ajax...
         // or using timers , listeners for any events
-        
+        this.setState({
+            contests: data.contests
+        });
     };
 
     componentWillUnmount() {
@@ -51,7 +56,7 @@ class App extends React.Component {
             <div className="App" >
                 <Header message={this.state.pageHeader} />
                 <div>
-                    { this.props.contests.map(contest =>
+                    { this.state.contests.map(contest =>
                         <ContestPreview {...contest} key={contest.id} />
                     )}
                 </div>
