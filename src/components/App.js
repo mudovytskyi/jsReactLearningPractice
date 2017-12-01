@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import ContestPreview from './ContestPreview';
 
 // simple stateless component
 // const App = () => {
@@ -49,12 +50,9 @@ class App extends React.Component {
         return (
             <div className="App" >
                 <Header message={this.state.pageHeader} />
-                 {/* <div>
-                    {this.state.test}
-                </div>  */}
-                {/* <div>
-                    {this.state.test}
-                </div> */}
+                <div>
+                    <ContestPreview {...this.props.contests[0]} />
+                </div>
             </div>
         );
     };

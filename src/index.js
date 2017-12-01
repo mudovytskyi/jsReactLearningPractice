@@ -92,7 +92,7 @@ const App = () => {
 ----------------
  */
 import data from './testData';
-console.log(data);
+// console.log(data);
 
 import App from './components/App';
 
