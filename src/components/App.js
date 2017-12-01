@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
 
 
-import data from '../testData';
+// import data from '../testData';
 // simple stateless component
 // const App = () => {
 //     return (
@@ -39,9 +40,21 @@ class App extends React.Component {
         //usually using here ajax searching to check if there any dom to mount
         //ajax...
         // or using timers , listeners for any events
-        this.setState({
-            contests: data.contests
-        });
+        
+        // will do ajax here
+        // this.setState({
+        //     contests: data.contests
+        // });
+
+        //use promises
+        axios.get('/api/contests')
+            .then(resp => {
+                // console.log(resp);
+                this.setState({
+                    contests: resp.data.contests
+                });
+            })
+            .catch(console.error)
     };
 
     componentWillUnmount() {
