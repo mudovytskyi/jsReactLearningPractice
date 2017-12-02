@@ -3,6 +3,9 @@ import React from 'react';
 import Header from './Header';
 import ContestList from './ContestList';
 
+// using history API of HTML5
+const pushState = (obj, url) => 
+    window.history.pushState(obj, '', url);
 
 // import data from '../testData';
 // simple stateless component
@@ -64,12 +67,21 @@ class App extends React.Component {
 
         // here clean timers, listeners
     };
+    
+    fetchContest = (contestId) => {
+        pushState(
+            { currentContestId: contestId},
+            `/contest/${contestId}`
+        )
+    };
 
     render() {
         return (
             <div className="App" >
                 <Header message={this.state.pageHeader} />
-                <ContestList contests={this.state.contests} />
+                <ContestList 
+                onContestClick={this.fetchContest}
+                contests={this.state.contests} />
             </div>
         );
     };
