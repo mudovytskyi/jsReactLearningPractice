@@ -18,7 +18,7 @@ class ContestPreview extends Component {
                 </div>
             </div>
         );
-    }
+    };
 }
 
 // stateless component
