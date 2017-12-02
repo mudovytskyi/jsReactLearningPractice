@@ -98,7 +98,8 @@ import App from './components/App';
 
 // axios.get('/api/contests')
 // .then(resp => {
-    ReactDOM.render( 
+    // ReactDOM.render( 
+    ReactDOM.hydrate( 
         <App initialContests={window.initialData.contests} />,
         document.getElementById('root')
     );
