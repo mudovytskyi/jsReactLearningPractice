@@ -49,12 +49,21 @@ const server = express();
     
     server.set('view engine', 'ejs');
     
-    import './serverRender';
-
+    // import './serverRender';
+    import serverRender from './serverRender';
+    import axious from 'axios';
+    
     server.get('/', (req, res) => {
-        res.render('index', {
-            content: '...'
-        });
+        serverRender()
+            .then(content => {
+                res.render('index', {
+                    content
+                });
+            })
+            .catch(console.error);
+        // res.render('index', {
+        //     content: '...'
+        // });
     });
     /* 
     // import fs from 'fs';

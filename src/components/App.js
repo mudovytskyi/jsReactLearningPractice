@@ -30,7 +30,8 @@ class App extends React.Component {
     
     state = { 
         pageHeader: 'Naming Contests',
-        contests: []
+        // contests: []
+        contests: this.props.initialContests
     };
 
     componentDidMount() {
@@ -65,6 +66,7 @@ class App extends React.Component {
     };
 
     render() {
+        debugger;
         return (
             <div className="App" >
                 <Header message={this.state.pageHeader} />
