@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
 
@@ -48,14 +48,14 @@ class App extends React.Component {
         // });
 
         //use promises
-        axios.get('/api/contests')
-            .then(resp => {
-                // console.log(resp);
-                this.setState({
-                    contests: resp.data.contests
-                });
-            })
-            .catch(console.error)
+        // axios.get('/api/contests')
+        //     .then(resp => {
+        //         // console.log(resp);
+        //         this.setState({
+        //             contests: resp.data.contests
+        //         });
+        //     })
+        //     .catch(console.error)
     };
 
     componentWillUnmount() {
@@ -66,7 +66,6 @@ class App extends React.Component {
     };
 
     render() {
-        debugger;
         return (
             <div className="App" >
                 <Header message={this.state.pageHeader} />

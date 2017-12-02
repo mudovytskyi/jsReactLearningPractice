@@ -93,14 +93,22 @@ const App = () => {
  */
 // import data from './testData';
 // console.log(data);
-
+// import axios from 'axios';
 import App from './components/App';
 
-ReactDOM.render( 
-    // <App contests={data.contests} /> ,
-    <App initialContests={[]} /> ,
-    document.getElementById('root')
-);
+// axios.get('/api/contests')
+// .then(resp => {
+    ReactDOM.render( 
+        <App initialContests={window.initialData.contests} />,
+        document.getElementById('root')
+    );
+// })
+// .catch(console.error);
+// ReactDOM.render( 
+//     // <App contests={data.contests} /> ,
+//     <App initialContests={[]} /> ,
+//     document.getElementById('root')
+// );
 
 // setTimeout(() => {
 //     ReactDOM.render( 
