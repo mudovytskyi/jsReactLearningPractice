@@ -17,7 +17,7 @@ class Contest extends Component {
 
 Contest.propTypes = {
     id: PropTypes.number.isRequired,
-    contestCategory: PropTypes.string.isRequired,
+    categoryName: PropTypes.string.isRequired,
     contestName: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
 };

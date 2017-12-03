@@ -53,8 +53,11 @@ const server = express();
     import serverRender from './serverRender';
     import axious from 'axios';
     
-    server.get('/', (req, res) => {
-        serverRender()
+    // server.get('/', (req, res) => {
+    server.get(['/', '/contest/:contestId'], (req, res) => {
+        // req.params.contestId
+        // console.log(req.params.contestId);
+        serverRender(req.params.contestId)
             .then(({initialMarkup, initialData}) => {
                 res.render('index', {
                     initialMarkup, 
