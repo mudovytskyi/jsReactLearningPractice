@@ -100,7 +100,8 @@ import App from './components/App';
 // .then(resp => {
     // ReactDOM.render( 
     ReactDOM.hydrate( 
-        <App initialContests={window.initialData.contests} />,
+        // <App initialContests={window.initialData.contests} />,
+        <App initialData={window.initialData} />,
         document.getElementById('root')
     );
 // })
