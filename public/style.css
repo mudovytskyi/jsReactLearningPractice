@@ -5,9 +5,16 @@
     border-bottom: 1px solid #ccc;
     padding: 0.25em 0.5em;
     font-weight: bold;
-    background-color: #eee; }
+    background-color: #e61818; }
   .ContestPreview .contest-name {
     padding: 0.5em; }
 
 .link {
   cursor: pointer; }
+
+.home-link {
+  margin-top: 1em;
+  color: #00c; }
+
+.Contest {
+  background: #cc4; }

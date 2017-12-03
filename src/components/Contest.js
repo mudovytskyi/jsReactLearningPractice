@@ -6,10 +6,16 @@ class Contest extends Component {
     render() {
         return (
             <div className="Contest">
-                {this.props.id}<br/>
-                {this.props.categoryName}<br/>
-                {this.props.contestName}<br/>
-                {this.props.description}<br/>
+                <div className="contest-description">
+                    {this.props.id}<br/>
+                    {this.props.categoryName}<br/>
+                    {this.props.contestName}<br/>
+                    {this.props.description}<br/>
+                </div>
+                <div className="home-link link"
+                    onClick={this.props.contestListClick}>
+                    Contest List
+                </div>
             </div>
         );
     }
@@ -20,6 +26,7 @@ Contest.propTypes = {
     categoryName: PropTypes.string.isRequired,
     contestName: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    contestListClick: PropTypes.func.isRequired,
 };
 
 export default Contest;
