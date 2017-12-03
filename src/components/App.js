@@ -11,6 +11,9 @@ import * as api from '../api';
 const pushState = (obj, url) => 
     window.history.pushState(obj, '', url);
 
+const onPopState = handler => {
+    window.onpopstate = handler;
+};
 // import data from '../testData';
 // simple stateless component
 // const App = () => {
@@ -67,6 +70,21 @@ class App extends React.Component {
         //         });
         //     })
         //     .catch(console.error)
+
+        // handle history navigating
+        // window.onpopstate = (event) => {
+        //     // debugger;
+        //     console.log(event);
+        // };
+        onPopState((event) => {
+            // debugger;
+            // console.log(event.state);
+            this.setState({
+                currentContestId: (event.state || {}).currentContestId
+            });
+        });
+
+
     };
 
     componentWillUnmount() {
@@ -74,6 +92,7 @@ class App extends React.Component {
         // debugger;
 
         // here clean timers, listeners
+        onPopState(null);
     };
     
     pageHeader() {
