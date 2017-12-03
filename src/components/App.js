@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './Header';
 import ContestList from './ContestList';
 import Contest from './Contest';
+import * as api from '../api';
 
 // using history API of HTML5
 const pushState = (obj, url) => 
@@ -77,9 +78,19 @@ class App extends React.Component {
         //now need to lookup the contest, not only change the router
         // and change it to mongodb interface
         // this.state.contests[contestId]
-        this.setState({
-           pageHeader: this.state.contests[contestId].contestName,
-           currentContestId: contestId
+        // this.setState({
+        //    pageHeader: this.state.contests[contestId].contestName,
+        //    currentContestId: contestId
+        // });
+       api.fetchContest(contestId).then(contest => {
+           this.setState({
+               pageHeader: contest.contestName,
+               currentContestId: contest.id,
+               contests: {
+                   ...this.state.contests,
+                   [contest.id]: contest
+               }
+            });
         });
     };
 

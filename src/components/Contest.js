@@ -9,6 +9,7 @@ class Contest extends Component {
                 {this.props.id}<br/>
                 {this.props.categoryName}<br/>
                 {this.props.contestName}<br/>
+                {this.props.description}<br/>
             </div>
         );
     }
@@ -17,7 +18,8 @@ class Contest extends Component {
 Contest.propTypes = {
     id: PropTypes.number.isRequired,
     contestCategory: PropTypes.string.isRequired,
-    contestName: PropTypes.string.isRequired
+    contestName: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
 };
 
 export default Contest;
