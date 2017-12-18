@@ -55,6 +55,20 @@ router.get('/contests', (req, res) => {
         });
 });
 
+router.get('/names/:nameIds', (req, res) => {
+    const nameIds = req.params.nameIds.split(',').map(Number);
+    let names = {};
+    mdb.collection('names').find({ id: {$in: nameIds }})
+        .each((err, name) => {
+            assert.equal(null, err);
+            if (!name) { // no more names
+                res.send({names});
+                return;
+            }
+            names[name.id] = name;
+        });
+});
+
 router.get('/contests/:contestId', (req, res) => {
    /*  console.log(`ID: ${req.url}`);
     //req.params.contestId
