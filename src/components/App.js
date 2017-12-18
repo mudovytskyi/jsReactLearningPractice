@@ -116,10 +116,12 @@ class App extends React.Component {
        api.fetchContest(contestId).then(contest => {
            this.setState({
             //    pageHeader: contest.contestName,
-               currentContestId: contest.id,
+            //    currentContestId: contest.id,
+               currentContestId: contest._id,
                contests: {
                    ...this.state.contests,
-                   [contest.id]: contest
+                //    [contest.id]: contest
+                   [contest._id]: contest
                }
             });
         });

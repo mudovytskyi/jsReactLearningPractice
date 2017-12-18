@@ -59,12 +59,18 @@ const server = express();
         // console.log(req.params.contestId);
         serverRender(req.params.contestId)
             .then(({initialMarkup, initialData}) => {
+                //console.log(`InitialMarkup : ${initialMarkup}`);
                 res.render('index', {
                     initialMarkup, 
                     initialData
                 });
             })
-            .catch(console.error);
+            // .catch(console.error);
+            .catch(error => {
+                // res.send(error.toString());
+                console.error(error);
+                res.status(404).send('Bad Request');
+            });
         // res.render('index', {
         //     content: '...'
         // });

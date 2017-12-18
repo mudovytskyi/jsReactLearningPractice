@@ -1,7 +1,7 @@
 import express from 'express';
 // import data from '../src/testData';
 
-import {MongoClient} from 'mongodb';
+import {MongoClient, ObjectID} from 'mongodb';
 import assert from 'assert';
 import config from '../config';
 import Contest from '../src/components/Contest';
@@ -51,22 +51,26 @@ router.get('/contests', (req, res) => {
                 res.send({contests});
                 return;
             }
-            contests[contest.id] = contest;
+            contests[contest._id] = contest;
+            // contests[contest.id] = contest;
         });
 });
 
 router.get('/names/:nameIds', (req, res) => {
-    const nameIds = req.params.nameIds.split(',').map(Number);
+    // const nameIds = req.params.nameIds.split(',').map(Number);
+    const nameIds = req.params.nameIds.split(',').map(ObjectID);
     let names = {};
     setTimeout(function() {
-        mdb.collection('names').find({ id: {$in: nameIds }})
+        mdb.collection('names').find({ _id: {$in: nameIds }})
+        // mdb.collection('names').find({ id: {$in: nameIds }})
         .each((err, name) => {
             assert.equal(null, err);
             if (!name) { // no more names
                 res.send({names});
                 return;
             }
-            names[name.id] = name;
+            names[name._id] = name;
+            // names[name.id] = name;
         });
     }, 4000);
 });
@@ -79,7 +83,8 @@ router.get('/contests/:contestId', (req, res) => {
     res.send(contest); */
 
     mdb.collection('contests')
-    .findOne({ id: Number(req.params.contestId)})
+    .findOne({ _id: ObjectID(req.params.contestId)})
+    // .findOne({ id: Number(req.params.contestId)})
     .then(contest => res.send(contest))
     .catch(console.error);
 });
