@@ -37,7 +37,11 @@ import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
 
 import express from 'express';
+
+import bodyParser from'body-parser';
+
 const server = express();
+server.use(bodyParser.json());
 
 // server.get('/', (req, res) => {
     //     res.send('Hello Express');
