@@ -6,6 +6,15 @@ class Contest extends Component {
         this.props.fetchNames(this.props.nameIds);
     };
     
+    handleSubmit = (event) => {
+        event.preventDefault();
+        // console.log('test');
+        // console.log(this.refs.newNameInput.value);
+        // read the value that the user types
+        this.props.addName(this.refs.newNameInput.value, this.props._id);
+        this.refs.newNameInput.value = '';
+    };
+
     render() {
         return (
             <div className="Contest">
@@ -35,12 +44,38 @@ class Contest extends Component {
                     </div>
                     <div className="panel-body">
                         <ul className="list-group">
+                            {this.props.nameIds.map(nameId =>
+                            <li key={nameId} className="list-group-item">
+                                {this.props.lookupName(nameId).name}
+                            </li>
+                            )}
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        <h3 className="panel-title">Propose a New Name</h3>
+                    </div>
+                    <div className="panel-body">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="input-group">
+                                <input type="text"
+                                    placeholder="New Name Here..."
+                                    ref="newNameInput"
+                                    className="form-control" />
+                                <span className="input-group-btn">
+                                    <button type="submit" className="btn btn-info">Submit</button>
+                                </span>
+                            </div>
+                        </form>
+                      {/*   <ul className="list-group">
                            {this.props.nameIds.map(nameId =>
                             <li key={nameId} className="list-group-item">
                                 {this.props.lookupName(nameId).name}
                             </li>
                         )}
-                        </ul>
+                    </ul> */}
                     </div>
                 </div>
                 
@@ -54,6 +89,7 @@ class Contest extends Component {
 }
 
 Contest.propTypes = {
+    _id: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     categoryName: PropTypes.string.isRequired,
     contestName: PropTypes.string.isRequired,
@@ -62,6 +98,8 @@ Contest.propTypes = {
     fetchNames: PropTypes.func.isRequired,
     nameIds: PropTypes.array.isRequired,
     lookupName: PropTypes.func.isRequired,
+    addName: PropTypes.func.isRequired,
+
 };
 
 export default Contest;
